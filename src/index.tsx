@@ -1,5 +1,5 @@
 import React from "react";
 import { render } from "react-dom";
-import { App } from "./App";
+import { Slides } from "./slides";
 
-render(<App />, document.getElementById("root"));
+render(<Slides />, document.getElementById("root"));
