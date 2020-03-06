@@ -1,5 +1,5 @@
 {
-  "name": "react-pres-webpack",
+  "name": "react-pres",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -18,10 +18,8 @@
     "@types/styled-components": "^5.0.1",
     "@types/styled-system": "^5.1.8",
     "babel-loader": "^8.0.6",
-    "css-loader": "^3.4.2",
     "html-webpack-plugin": "^3.2.0",
     "react-refresh": "^0.7.2",
-    "style-loader": "^1.1.3",
     "typescript": "^3.8.2",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
