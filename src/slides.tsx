@@ -1,9 +1,11 @@
 import React from "react";
-import "./styles.css";
 import { Presentation } from "./presentation";
+import { Box, Heading } from "./components/base";
 
 export const Slides = () => (
   <Presentation>
-    <h1>hello</h1>
+    <Box>
+      <Heading>hello</Heading>
+    </Box>
   </Presentation>
 );

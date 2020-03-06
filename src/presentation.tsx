@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
-
-type Props = {
-  theme?: "light" | "dark";
-};
+import { ThemeProvider } from "styled-components";
+import { theme } from "./components/theme";
 
 const incKeys = ["ArrowRight", "l"];
 const decKeys = ["ArrowLeft", "h"];
 
-export const Presentation: React.FC<Props> = ({
-  children,
-  theme = "light"
-}) => {
+export const Presentation: React.FC = ({ children }) => {
   const slides = React.Children.toArray(children);
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -31,5 +26,5 @@ export const Presentation: React.FC<Props> = ({
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   });
-  return <div className={`presentation ${theme}`}>{slides[slideIndex]}</div>;
+  return <ThemeProvider theme={theme}>{slides[slideIndex]}</ThemeProvider>;
 };
