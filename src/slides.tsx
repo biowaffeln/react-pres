@@ -1,11 +1,34 @@
 import React from "react";
 import { Presentation } from "./presentation";
-import { Box, Heading } from "./components/base";
+import { Heading, Flex, Text } from "./components/base";
+import { TitleSlide, Slide } from "./components/layouts";
 
 export const Slides = () => (
   <Presentation>
-    <Box>
-      <Heading>hello</Heading>
-    </Box>
+    <TitleSlide>
+      <Heading as="h1" fontSize={4}>
+        Example Heading for a cool Presentation
+      </Heading>
+      <Text fontSize={2}>React-Pres</Text>
+      <Text fontSize={2}>Mark Kvetny</Text>
+    </TitleSlide>
+    <Slide>
+      <Heading>This is a title</Heading>
+    </Slide>
+    <Slide>
+      <Heading>Another Title</Heading>
+      <Text>with some text</Text>
+    </Slide>
+    <Slide>
+      <Text fontSize={0}>Hello</Text>
+      <Text fontSize={1}>Hello</Text>
+      <Text fontSize={2}>Hello</Text>
+      <Heading fontSize={3} mb={1}>
+        hello
+      </Heading>
+      <Heading fontSize={4} mb={1}>
+        hello
+      </Heading>
+    </Slide>
   </Presentation>
 );

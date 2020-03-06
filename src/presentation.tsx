@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./components/theme";
+import { Reset } from "styled-reset";
 
 const incKeys = ["ArrowRight", "l"];
 const decKeys = ["ArrowLeft", "h"];
@@ -26,5 +27,10 @@ export const Presentation: React.FC = ({ children }) => {
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
   });
-  return <ThemeProvider theme={theme}>{slides[slideIndex]}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <Reset />
+      {slides[slideIndex]}
+    </ThemeProvider>
+  );
 };
