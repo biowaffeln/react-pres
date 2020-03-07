@@ -33,8 +33,12 @@ export const Flex = styled(Box)<FlexProps>(flexbox, {
   display: "flex"
 });
 
+export const Text: React.FC<BoxProps> = props => (
+  <Box as="p" color="text" fontFamily="body" fontSize={1} mb={1} {...props} />
+);
+
 export const Heading: React.FC<BoxProps> = props => (
-  <Box
+  <Text
     as="h2"
     fontSize={3}
     fontWeight="bold"
@@ -45,6 +49,3 @@ export const Heading: React.FC<BoxProps> = props => (
   />
 );
 
-export const Text: React.FC<BoxProps> = props => (
-  <Box as="p" fontFamily="body" fontSize={1} mb={1} {...props} />
-);

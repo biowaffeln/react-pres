@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./components/theme";
-import { Reset } from "styled-reset";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
+import { theme, TTheme } from "./components/theme";
+import reset from "styled-reset";
 
 const incKeys = ["ArrowRight", "l"];
 const decKeys = ["ArrowLeft", "h"];
+
+const Global = createGlobalStyle`
+  ${reset}
+  body {
+    background: ${(props: {theme: TTheme}) => props.theme.colors.background};
+  }
+`
 
 export const Presentation: React.FC = ({ children }) => {
   const slides = React.Children.toArray(children);
@@ -29,7 +36,7 @@ export const Presentation: React.FC = ({ children }) => {
   });
   return (
     <ThemeProvider theme={theme}>
-      <Reset />
+      <Global />
       {slides[slideIndex]}
     </ThemeProvider>
   );
