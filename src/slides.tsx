@@ -1,7 +1,7 @@
 import React from "react";
 import { Presentation } from "./presentation";
 import { Heading, Flex, Text } from "./components/base";
-import { TitleSlide, Slide } from "./components/layouts";
+import { TitleSlide, Slide, ImgSlide } from "./components/layouts";
 
 export const Slides = () => (
   <Presentation>
@@ -30,5 +30,8 @@ export const Slides = () => (
         hello
       </Heading>
     </Slide>
+    <ImgSlide url="https://images.unsplash.com/photo-1503942142281-94af0aded523">
+      <Heading color="#eee" mb={0}>slide with a nice, darkened image</Heading>
+    </ImgSlide>
   </Presentation>
 );

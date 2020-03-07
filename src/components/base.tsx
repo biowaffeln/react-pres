@@ -5,20 +5,26 @@ import {
   color,
   layout,
   typography,
+  background,
+  BackgroundProps,
   SpaceProps,
   ColorProps,
   TypographyProps,
   LayoutProps,
   flexbox,
-  FlexboxProps
+  FlexboxProps,
+  PositionProps,
+  position
 } from "styled-system";
 
 type BoxProps = React.HTMLProps<HTMLDivElement> &
   SpaceProps &
   ColorProps &
   LayoutProps &
+  BackgroundProps &
+  PositionProps &
   TypographyProps & { as?: any };
-export const Box = styled.div<BoxProps>(space, color, layout, typography, {
+export const Box = styled.div<BoxProps>(space, color, layout, background, typography, position, {
   boxSizing: "border-box"
 });
 
