@@ -7,8 +7,10 @@ export const theme = {
   space: [0, "0.5rem", "1rem", "2rem", "3rem", "5rem", "7rem", "10rem"],
   colors: {
     text: "#222",
+    textInverted: "#fff",
     background: "#f3f4f4"
-  }
+  },
+  lineHeights: [1, 1.2]
 };
 
-export type TTheme = typeof theme; 
+export type TTheme = typeof theme;
