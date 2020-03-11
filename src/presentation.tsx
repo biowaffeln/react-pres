@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+import createPersistedState from "use-persisted-state";
 import { Route } from "wouter";
 import { theme, TTheme } from "./components/theme";
 import reset from "styled-reset";
@@ -25,7 +26,7 @@ const isNote = (child: any) =>
   child.hasOwnProperty("type") && child.type.name === "Note";
 
 const mapToNotes = (slides: any[]) =>
-  slides.map((slide: any) => {
+  slides.map(slide => {
     try {
       const children = slide.props.children;
       if (Array.isArray(children)) {
@@ -39,10 +40,16 @@ const mapToNotes = (slides: any[]) =>
     }
   });
 
+const useSlideState = createPersistedState("slideIndex");
+
 export const Presentation: React.FC = ({ children }) => {
   const slides = React.Children.toArray(children);
   const notes = mapToNotes(slides);
-  const [slideIndex, setSlideIndex] = useState(0);
+  const [slideIndex, setSlideIndex] = useSlideState(0);
+
+  /* useEffect(() => { */
+  /*   setSlideIndex(0); */
+  /* }, []); */
 
   const inc = () => {
     if (slideIndex == slides.length - 1) return;
@@ -69,11 +76,11 @@ export const Presentation: React.FC = ({ children }) => {
         <Flex>
           <Box width={3 / 4}>{slides[slideIndex]}</Box>
           <Box
-            width={1 / 4}
-            p={3}
-            backgroundColor="#fff"
-            boxShadow="1px 2px 5px rgba(0,0,0,.12)"
             className="notes"
+            width={1 / 4}
+            background="#fff"
+            p={3}
+            boxShadow={1}
           >
             {notes[slideIndex]}
           </Box>

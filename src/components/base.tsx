@@ -35,7 +35,7 @@ export type BoxProps = React.HTMLProps<HTMLDivElement> &
   ShadowProps &
   BorderProps &
   BorderRadiusProps &
-  TypographyProps & { filter?: string };
+  TypographyProps & { filter?: string; as?: any };
 export const Box = styled.div<BoxProps>(
   space,
   color,
@@ -60,7 +60,7 @@ export const Flex = styled(Box)<FlexProps>(flexbox, {
 export const Text: React.FC<BoxProps> = props => (
   <Box
     lineHeight={1}
-    as={"p" as any}
+    as="p"
     color="text"
     fontFamily="body"
     fontSize={1}
@@ -71,7 +71,7 @@ export const Text: React.FC<BoxProps> = props => (
 
 export const Heading: React.FC<BoxProps> = props => (
   <Text
-    as={"h2" as any}
+    as="h2"
     fontSize={3}
     fontWeight="bold"
     fontFamily="heading"
@@ -82,21 +82,20 @@ export const Heading: React.FC<BoxProps> = props => (
 );
 
 export const Image: React.FC<BoxProps> = props => (
-  <Box
-    as={"img" as any}
-    boxShadow="1px 2px 10px rgba(0,0,0,.12)"
-    borderRadius={3}
-    {...props}
-  />
+  <Box as={"img" as any} boxShadow={0} borderRadius={3} {...props} />
 );
 
 export const Blockquote: React.FC<BoxProps> = props => (
   <Text
-    as={"blockquote" as any}
+    as="blockquote"
     fontStyle="italic"
     pl={3}
     borderLeftStyle="solid"
     borderLeftWidth={3}
     {...props}
   />
+);
+
+export const Note: React.FC<FlexProps> = props => (
+  <Box className="note" fontFamily="body" fontSize="0" {...props} />
 );

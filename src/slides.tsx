@@ -1,9 +1,7 @@
 import React from "react";
 import { Presentation } from "./presentation";
-import { Heading, Flex, Text } from "./components/base";
+import { Heading, Text, Note } from "./components/base";
 import { TitleSlide, Slide, ImgSlide } from "./components/layouts";
-
-const Note = props => <Text className="note" {...props} />;
 
 export const Slides = () => (
   <Presentation>
@@ -13,10 +11,10 @@ export const Slides = () => (
       </Heading>
       <Text fontSize={2}>React-Pres</Text>
       <Text fontSize={2}>Mark Kvetny</Text>
-      <Note>hello</Note>
     </TitleSlide>
     <Slide>
       <Heading>This is a title</Heading>
+      <Note></Note>
     </Slide>
     <Slide>
       <Heading>Another Title</Heading>
