@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+import { Route } from "wouter";
 import { theme, TTheme } from "./components/theme";
 import reset from "styled-reset";
+import { Box, Flex } from "./components/base";
 
 const incKeys = ["ArrowRight", "l"];
 const decKeys = ["ArrowLeft", "h"];
@@ -9,12 +11,37 @@ const decKeys = ["ArrowLeft", "h"];
 const Global = createGlobalStyle`
   ${reset}
   body {
-    background: ${(props: {theme: TTheme}) => props.theme.colors.background};
+    background: ${(props: { theme: TTheme }) => props.theme.colors.background};
   }
-`
+  .note {
+    display: none;
+  }
+  .notes .note {
+    display: inherit;
+  }
+`;
+
+const isNote = (child: any) =>
+  child.hasOwnProperty("type") && child.type.name === "Note";
+
+const mapToNotes = (slides: any[]) =>
+  slides.map((slide: any) => {
+    try {
+      const children = slide.props.children;
+      if (Array.isArray(children)) {
+        const foundNote = children.find(isNote);
+        return foundNote ? foundNote : null;
+      } else {
+        return isNote(children) ? children : null;
+      }
+    } catch {
+      return null;
+    }
+  });
 
 export const Presentation: React.FC = ({ children }) => {
   const slides = React.Children.toArray(children);
+  const notes = mapToNotes(slides);
   const [slideIndex, setSlideIndex] = useState(0);
 
   const inc = () => {
@@ -37,7 +64,21 @@ export const Presentation: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <Global />
-      {slides[slideIndex]}
+      <Route path="/">{slides[slideIndex]}</Route>
+      <Route path="/notes">
+        <Flex>
+          <Box width={3 / 4}>{slides[slideIndex]}</Box>
+          <Box
+            width={1 / 4}
+            p={3}
+            backgroundColor="#fff"
+            boxShadow="1px 2px 5px rgba(0,0,0,.12)"
+            className="notes"
+          >
+            {notes[slideIndex]}
+          </Box>
+        </Flex>
+      </Route>
     </ThemeProvider>
   );
 };

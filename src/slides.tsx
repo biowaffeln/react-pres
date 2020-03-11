@@ -3,6 +3,8 @@ import { Presentation } from "./presentation";
 import { Heading, Flex, Text } from "./components/base";
 import { TitleSlide, Slide, ImgSlide } from "./components/layouts";
 
+const Note = props => <Text className="note" {...props} />;
+
 export const Slides = () => (
   <Presentation>
     <TitleSlide>
@@ -11,6 +13,7 @@ export const Slides = () => (
       </Heading>
       <Text fontSize={2}>React-Pres</Text>
       <Text fontSize={2}>Mark Kvetny</Text>
+      <Note>hello</Note>
     </TitleSlide>
     <Slide>
       <Heading>This is a title</Heading>
@@ -31,7 +34,9 @@ export const Slides = () => (
       </Heading>
     </Slide>
     <ImgSlide url="https://images.unsplash.com/photo-1503942142281-94af0aded523">
-      <Heading color="#eee" mb={0}>slide with a nice, darkened image</Heading>
+      <Heading color="#eee" mb={0}>
+        slide with a nice, darkened image
+      </Heading>
     </ImgSlide>
   </Presentation>
 );
