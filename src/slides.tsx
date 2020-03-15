@@ -1,7 +1,8 @@
 import React from "react";
 import { Presentation } from "./presentation";
-import { Heading, Text, Note } from "./components/base";
+import { Heading, Text } from "./components/base";
 import { TitleSlide, Slide, ImgSlide } from "./components/layouts";
+import { Note } from "./components/note";
 
 export const Slides = () => (
   <Presentation>
@@ -14,7 +15,18 @@ export const Slides = () => (
     </TitleSlide>
     <Slide>
       <Heading>This is a title</Heading>
-      <Note></Note>
+      <Note
+        text={`
+# Hello
+
+at this point I wanted to say this
+
+remind me to do this and that
+here's a list:
+- cool lorem iaksjd asdlask dlaskdj laskdj lksdj asjdh
+
+`}
+      />
     </Slide>
     <Slide>
       <Heading>Another Title</Heading>

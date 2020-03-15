@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import createPersistedState from "use-persisted-state";
 import { Route } from "wouter";
@@ -71,13 +71,16 @@ export const Presentation: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <Global />
-      <Route path="/">{slides[slideIndex]}</Route>
+      <Route path="/">
+        <Box height="100vh">{slides[slideIndex]}</Box>
+      </Route>
       <Route path="/notes">
-        <Flex>
+        <Flex height="100vh">
           <Box width={3 / 4}>{slides[slideIndex]}</Box>
           <Box
             className="notes"
             width={1 / 4}
+            minWidth={350}
             background="#fff"
             p={3}
             boxShadow={1}

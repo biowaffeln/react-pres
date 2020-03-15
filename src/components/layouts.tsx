@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Flex, BoxProps, Heading } from "./base";
 
 export const TitleSlide: React.FC = props => (
-  <Box px={6} height="100vh">
+  <Box px={6} height="100%">
     <Flex justifyContent="center" flexDirection="column" height="100%">
       {props.children}
     </Flex>
@@ -10,7 +10,7 @@ export const TitleSlide: React.FC = props => (
 );
 
 export const Slide: React.FC = props => (
-  <Box px={7} pt={6} height="100vh">
+  <Box px={7} pt={6} height="100%">
     {props.children}
   </Box>
 );
@@ -21,7 +21,7 @@ type ImgSlideProps = {
 };
 
 export const ImgSlide: React.FC<ImgSlideProps> = props => (
-  <Box px={6} height="100vh">
+  <Box px={6} height="100%">
     <Box
       background={`url(${props.url}) no-repeat center center fixed`}
       backgroundSize="cover"

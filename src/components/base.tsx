@@ -95,7 +95,3 @@ export const Blockquote: React.FC<BoxProps> = props => (
     {...props}
   />
 );
-
-export const Note: React.FC<FlexProps> = props => (
-  <Box className="note" fontFamily="body" fontSize="0" {...props} />
-);
